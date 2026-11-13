@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo Bruxo - Harry Potter</title>
+    <style>
+        /* CONFIGURAÇÕES GERAIS E FUNDO MÁGICO */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #111116, #1a1a2e, #16213e);
+            color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* CARD PRINCIPAL DA PÁGINA */
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.65);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            border: 2px solid #aa7c11; /* Borda dourada antiga */
+            max-width: 500px;
+            width: 90%;
+        }
+
+        /* ESTILO DO TÍTULO */
+        h1 {
+            font-size: 2.5rem;
+            color: #ffd700; /* Dourado */
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* PARÁGRAFO */
+        p {
+            font-size: 1.1rem;
+            color: #d1d1d1;
+            line-height: 1.6;
+        }
+
+        /* IMAGEM DO LOGO/BRASÃO */
+        .brasao-img {
+            width: 150px;
+            height: auto;
+            margin: 20px 0;
+            filter: drop-shadow(0px 4px 8px rgba(255, 215, 0, 0.3));
+        }
+
+        /* BOTÃO INTERATIVO */
+        .btn-seletor {
+            background: linear-gradient(45deg, #aa7c11, #ffd700);
+            color: #111;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        .btn-seletor:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* CAIXA DE RESULTADO DA CASA */
+        .resultado {
+            margin-top: 25px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            min-height: 40px;
+            transition: color 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Escola de Magia Hogwarts</h1>
+        
+        <!-- Imagem oficial do brasão de Hogwarts -->
+        <img class="brasao-img" src="https://wikimedia.org" alt="Brasão de Hogwarts">
+        
+        <p>O Chapéu Seletor está pronto para decidir o seu destino. Descubra agora a qual casa você pertence!</p>
+        
+        <button class="btn-seletor" onclick="descobrirCasa()">Colocar Chapéu Seletor</button>
+        
+        <!-- Onde o JavaScript vai injetar o resultado -->
+        <div id="resultado-casa" class="resultado"></div>
+    </div>
+
+    <script>
+        // FUNÇÃO JAVASCRIPT PARA SELECIONAR A CASA ALEATORIAMENTE
+        function descobrirCasa() {
+            // Lista com as 4 casas, suas respectivas cores e mensagens
+            const casas = [
+                { nome: "Grifinória! 🦁", cor: "#ae0001" },
+                { nome: "Sonserina! 🐍", cor: "#2a623d" },
+                { nome: "Corvinal! 🦅", cor: "#222f5e" },
+                { nome: "Lufa-Lufa! 🦡", cor: "#ecb939" }
+            ];
+
+            // Gera um número aleatório entre 0 e 3
+            const numeroAleatorio = Math.floor(Math.random() * casas.length);
+            
+            // Pega a casa sorteada usando o número aleatório
+            const casaSorteada = casas[numeroAleatorio];
+
+            // Altera o texto e a cor na tela usando o DOM
+            const elementoResultado = document.getElementById("resultado-casa");
+            elementoResultado.innerText = casaSorteada.nome;
+            elementoResultado.style.color = casaSorteada.cor;
+        }
+    </script>
+
+</body>
+</html>
